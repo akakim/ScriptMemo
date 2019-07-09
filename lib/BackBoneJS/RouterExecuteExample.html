@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RouterExecuteExample</title>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js" type="text/javascript"></script>
+
+
+</head>
+<body>
+
+    <!-- Router.execute()
+         Router.execute() method is called internally in a router if router matches its corresponding call back. The syntax below demonstrates the router.execute().
+
+         router.execute(callback, args) -->
+
+    <script type="text/javascript">
+
+        var Route1 = Backbone.View.extend({
+
+            template : '<b> this is route 1</b>',
+            initialize : function(){
+                this.execute();
+            },
+            execute:function(){
+                this.$el.html(this.template);
+            }
+
+        });
+
+        var Route2 = Backbone.View.extend({
+            template : '<b> this is route2</b>',
+            initialize : function(){
+                this.execute();
+            },
+            execute:function(){
+                this.$el.html(this.template);
+            }
+        });
+
+
+        var AppRouter = Backbone.Router.extend({
+           routes:{
+               '':'homeRouter',
+               'route/1' : 'homeRoute',
+               'route/2' : 'aboutRoute',
+           },
+            homeRoute:function(){
+                var route1 = new Route1();
+                $("#content").html( route1.el );
+            },
+            aboutRoute:function(){
+               var route2= new Route2();
+               $("#content").html(route2.el);
+            }
+
+        });
+
+        var appRouter = new AppRouter();
+        Backbone.history.start();
+
+    </script>
+
+    <div id="navigation">
+        <a href="#/route/1">route1</a>
+        <a href="#/route/2">route2</a>
+    </div>
+    <div id="content"></div>
+</body>
+</html>
