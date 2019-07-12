@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- reference [https://hyunseob.github.io/2016/02/08/copy-object-in-javascript/]-->
+<head>
+    <meta charset="UTF-8">
+    <title>Object Copy Example</title>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+    <script type="text/javascript">
+
+        /*   using UnderScore 얕은 복사 (Shallow Copy) */
+        var shallowCopyFoo  = { key: 'value' };
+        document.write( "shallowCopyFoo 원본 : " + shallowCopyFoo.key +"</br>");
+
+        var shallowCopyBar = _.clone( shallowCopyFoo );
+        document.write( "shallowCopyBar 원본 : " + shallowCopyBar.key +"</br>");
+
+        /* jquery extend 를 이용하는 방법이다. 원래는 개체 합병(merge)를 하기 위한 메소드 이지만,
+         복ㅅ를 위해 사용할 수도 있다.
+         */
+
+        var jQueryFoo = {key: 'value'};
+        var jQueryBar = $.extend( {},jQueryFoo );
+        jQueryFoo.key = 'other value';
+
+        document.write( "jQueryFoo 원본 : " + jQueryFoo.key +"</br>");
+        document.write( "jQueryBar 원본 : " + jQueryBar.key +"</br>");
+
+        /* 순수한 자바 스크립트로 구현하는건 다음과 같이 가능함. */
+        function clone(obj){
+            if(obj==null || typeof(obj) !=='object')
+                return obj;
+
+
+            var copy = obj.constructor();
+
+            for ( var attr in obj ){
+                if( obj.hasOwnProperty(attr)){
+                    copy[attr] = obj[attr];
+                }
+            }
+
+            return  copy;
+        }
+
+
+        /* 깊은 복사 (Deep Copy) */
+/*        var DeepFoo ={ deep : [ key : 'value']}*/
+    </script>
+
+</body>
+</html>

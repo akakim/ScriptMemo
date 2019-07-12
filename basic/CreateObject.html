@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- reference [https://developer.mozilla.org/ko/docs/A_re-introduction_to_JavaScript]-->
+    <meta charset="UTF-8">
+    <title>Create JS Object </title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        var obj = new Object();
+        var literalStatementObject = {};
+
+
+        obj.name= "Simon";
+        obj["anotherName"] = "AnotherName";
+        var name = obj.name;
+        var another = obj["anotherName"];
+
+
+        document.write( "객체의 값 " + name );
+        document.write( "객체의 값 다른 선언값 " + another );
+
+    </script>
+</body>
+</html>
