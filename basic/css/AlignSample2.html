@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- reference : [https://saimplay.tistory.com/115]-->
+<head>
+    <meta charset="UTF-8">
+    <title> IE9 이상에서도 가능한 예제 </title>
+
+    <style>
+        .d_container{
+            position: relative;
+            width:200px;
+            height:200px;
+            background: #ddd;
+        }
+
+        .div_box{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #dddddd;
+            color:#fff;
+        }
+        .div_center_box{
+            position: absolute;;
+            width: 100px;
+            height:100px;
+            background: #f00;
+            color: #FFF;
+            top: 50%;
+            left: 50%;
+            margin: auto;
+        }
+
+        .z_container{
+            position: relative;;
+            width: 300px;
+            height: 200px;
+            background: #284957;
+        }
+
+        .z_box{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: #dddddd;
+            transform: translate(-50%,50%)
+        }
+    </style>
+</head>
+<body>
+    <div class="z_container">
+        <div class="z_box"> z boxes  example . .... </div>
+    </div>
+
+
+    <div class="z_box"> z box2 Explore 전체에 대해서 의 중앙을 의미한다.  </div>
+</body>
+</html>
