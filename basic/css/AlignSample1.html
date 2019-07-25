@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- reference : [https://saimplay.tistory.com/115]-->
+<head>
+    <meta charset="UTF-8">
+    <title> IE7 이상에서도 가능한 예제 </title>
+
+    <style>
+        .d_container{
+            position: relative;
+            width:200px;
+            height:200px;
+            background: #ddd;
+        }
+
+        .div_box{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #dddddd;
+            color:#fff;
+        }
+        .div_center_box{
+            position: absolute;;
+            width: 100px;
+            height:100px;
+            background: #f00;
+            color: #FFF;
+            top: 50%;
+            left: 50%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="d_container">
+        <div class="div_box"> boxes </div>
+    </div>
+
+   <div class="div_center_box"> center_box </div>
+</body>
+</html>
