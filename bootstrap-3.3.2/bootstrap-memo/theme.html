@@ -39,7 +39,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-menu" data-toggle="dropdown" role="button" aria-expanded="false">DropDown<span class="caret"/></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">DropDown<span class="caret"/></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#"> Action </a></li>
                 <li><a href="#"> Another Action </a></li>
@@ -57,6 +57,172 @@
       </div>
 
   </nav>
+
+  <div class="container theme-showcase" role="main">
+
+    <div class="jumbotron">
+      <h1> 테마 예제</h1>
+      <p> 이 템블릿이 보여주는 케이스는 부트스트랩에 포함된 선택가능한 스타일시트 테마이다.
+         이것을 시작점으로 더 개성있는 무언갈 생성하기 위해 사용해라.
+          </p>
+    </div>
+
+    <div class="page-header" id="about">
+      <h1> 버튼 </h1>
+    </div>
+
+    <p>
+      <button type="button" class="btn btn-lg btn-default">기본</button>
+      <button type="button" class="btn btn-lg btn-primary">Primary</button>
+      <button type="button" class="btn btn-lg btn-success">성공</button>
+      <button type="button" class="btn btn-lg btn-info">정보</button>
+      <button type="button" class="btn btn-lg btn-warning">경고</button>
+      <button type="button" class="btn btn-lg btn-danger">위험</button>
+      <button type="button" class="btn btn-lg btn-link">링크</button>
+      <!-- 커스텀해서 Custom Button을 생성할 여지가 있다정도.  -->
+      <button type="button" class="btn btn-cus btn-link">커스텀</button>
+
+    <!--
+      이정도 사이즈가 있구나정도
+      <p>
+      <button type="button" class="btn btn-default">Default</button>
+      <button type="button" class="btn btn-primary">Primary</button>
+      <button type="button" class="btn btn-success">Success</button>
+      <button type="button" class="btn btn-info">Info</button>
+      <button type="button" class="btn btn-warning">Warning</button>
+      <button type="button" class="btn btn-danger">Danger</button>
+      <button type="button" class="btn btn-link">Link</button>
+    </p>
+    <p>
+      <button type="button" class="btn btn-sm btn-default">Default</button>
+      <button type="button" class="btn btn-sm btn-primary">Primary</button>
+      <button type="button" class="btn btn-sm btn-success">Success</button>
+      <button type="button" class="btn btn-sm btn-info">Info</button>
+      <button type="button" class="btn btn-sm btn-warning">Warning</button>
+      <button type="button" class="btn btn-sm btn-danger">Danger</button>
+      <button type="button" class="btn btn-sm btn-link">Link</button>
+    </p>
+    <p>
+      <button type="button" class="btn btn-xs btn-default">Default</button>
+      <button type="button" class="btn btn-xs btn-primary">Primary</button>
+      <button type="button" class="btn btn-xs btn-success">Success</button>
+      <button type="button" class="btn btn-xs btn-info">Info</button>
+      <button type="button" class="btn btn-xs btn-warning">Warning</button>
+      <button type="button" class="btn btn-xs btn-danger">Danger</button>
+      <button type="button" class="btn btn-xs btn-link">Link</button>
+    </p>-->
+    </p>
+  </div>
+
+  <div class="page-header">
+    <h1> 테이블들 . </h1>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>성씨</th>
+            <th>이름</th>
+          </tr>
+
+        </thead>
+        <tbody>
+          <tr>
+            <td> 1 </td>
+            <td> 김</td>
+            <td> 마크 </td>
+          </tr>
+          <tr>
+            <td> 2 </td>
+            <td> 제</td>
+            <td> 이콥</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-6">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>성씨</th>
+          <th>이름</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr>
+          <td> 1 </td>
+          <td> 김</td>
+          <td> 마크 </td>
+        </tr>
+        <tr>
+          <td> 2 </td>
+          <td> 제</td>
+          <td> 이콥</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="page-header">
+    <h1>Thumbnails</h1>
+
+    <img data-src="holder.js/200x200" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
+  </div>
+
+  <div class="page-header">
+    <h1>Labels</h1>
+  </div>
+
+  <h1>
+    <span class="label label-default">기본</span>
+    <span class="label label-primary">주목도 높음</span>
+    <span class="label label-success">성공</span>
+    <span class="label label-info">정보</span>
+    <span class="label label-warning">경고 </span>
+    <span class="label label-danger">위험/</span>
+  </h1>
+
+  <div class="page-header">
+    <h1>Badges</h1>
+  </div>
+
+  <p>
+    <a href="#"> 박스1 </a> <span class="badge">42</span>
+    <!-- 결국은 badge도 커스텀이 가능하다는 점을 이야기한다. -->
+    <a href="#"> 박스2 </a> <span class="badge bage-cus">44</span>
+
+  </p>
+
+  <ul class="nav nav-pills" role="tablist">
+    <li role="presentation" class="active"><a href="#">Home</a> <span class="badge">49</span></li>
+    <li role="presentation" class="active"><a href="#userProfile">Profile</a> <span class="badge">49</span></li>
+    <li role="presentation" class="active"><a href="#message">Message</a> <span class="badge">49</span></li>
+
+  </ul>
+
+  <div id="userProfile" class="page-header">
+    <h1> userProfile... </h1>
+  </div>
+
+  <div id="message" class="page-header">
+    <h1> Messages... </h1>
+  </div>
+
+  <div class="page-header">
+    <h1>Dropdown menus</h1>
+  </div>
+
+  <div class="dropdown theme-dropdown clearfix">
+
+  </div>
 
   <!-- Bootstrap core JavaScript
       ================================================== -->
