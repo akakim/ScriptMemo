@@ -20,6 +20,9 @@ View Render 예제
 </head>
 <body>
     <div id="mydiv"></div>
+
+
+
     <script type="text/javascript">
         var ViewDemo = Backbone.View.extend({
 
@@ -32,9 +35,11 @@ View Render 예제
             template: _.template("Welcome to <%= name%> 난 셈이다!"),
 
             // 뷰가 실체화 될때 함수가 초기화된다.
-            initialize:function(){
+            initialize:function(options){
                 this.render();
                 console.log(" Backbone is initialize... ")
+                console.log( options)
+                console.log( option2)
             },
 
             //'render' 는 뷰를 초기화하는데 필요한 논리를 제공한다.
@@ -50,8 +55,17 @@ View Render 예제
 
 
         });
+/*        var fs = [ 10,10,10];
+        var ts = [ 20,20,10];*/
 
-        var myView = new ViewDemo();
+var fs = 10;
+var ts = 20;
+var ss = 30;
+        var myView = new ViewDemo(
+            fs,
+            ts,
+            ss
+        );
 
     </script>
 </body>

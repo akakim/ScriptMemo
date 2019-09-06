@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="theme-description">
+    <meta name="author" content="ryoryeong">
+    <title>SimpleBackBoneJS</title>
+
+</head>
+<body>
+
+    <!-- ========= -->
+    <!-- Your HTML -->
+    <!-- ========= -->
+    <div id = "container">Loading...</div>
+    <!-- ========= -->
+    <!-- Libraries -->
+    <!-- ========= -->
+    <script src = "https://code.jquery.com/jquery-2.1.3.min.js"
+            type = "text/javascript"></script>
+
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"
+            type = "text/javascript"></script>
+
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"
+            type = "text/javascript"></script>
+
+
+    <!-- =============== -->
+    <!-- Javascript code -->
+    <!-- =============== -->
+
+    <script type = "text/javascript">
+
+
+        //url
+        // https://localhost:63342/ScriptMemo/lib/BackBoneJS/SimpleBackBone.html?_ijt=pn17qdtmsgk4sqio4qo3luvbfv
+        // https://localhost:63342/ScriptMemo/lib/data/
+        /*******************************************************************************
+         * Copyright 2017 The MIT Internet Trust Consortium
+         *
+         * Portions copyright 2011-2013 The MITRE Corporation
+         *
+         * Licensed under the Apache License, Version 2.0 (the "License");
+         * you may not use this file except in compliance with the License.
+         * You may obtain a copy of the License at
+         *
+         *   http://www.apache.org/licenses/LICENSE-2.0
+         *
+         * Unless required by applicable law or agreed to in writing, software
+         * distributed under the License is distributed on an "AS IS" BASIS,
+         * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+         * See the License for the specific language governing permissions and
+         * limitations under the License.
+         *******************************************************************************/
+        var UserModel = Backbone.Model.extend({
+
+            idAttribute: "id",
+            defaults:{
+                userInfo: [],
+                users: []
+            },
+            initialize: function() {
+                console.log("userModel is init ");
+            },
+
+            urlRoot: "/api/userlist"
+
+        });
+
+        var UserListCollection = Backbone.Collection.extend({
+            initialize: function() {
+                // this.fetch();
+                console.log("UserListCollection is init ");
+            },
+
+            /*getByUserName: function(userName) {
+                var users = this.where({
+                    userName: userName
+                });
+                if (users.length == 1) {
+                    return users[0];
+                } else {
+                    return null;
+                }
+            },*/
+
+            model: UserModel,
+            url: "/api/userlist"
+
+        });
+
+        var UserInfoModel = Backbone.Model.extend({
+            idAttribute:"preferredUsername",
+            defaults:{
+                id: null,
+
+                sub: null,
+                preferredUsername: null,
+                namde: null,
+                give_name: null,
+                family_name: null,
+                middle_name: null,
+                nickname: null,
+                profile: null,
+                picture: null,
+                website: null,
+                email: null,
+                emailVerified: false,
+                gender: null,
+                zoneInfo: null,
+                locale:null,
+                phoneNumber:null,
+                phoneNumberVerified:null,
+                addressId:null,
+                updatedTime:null,
+                birthdate: null,
+                src:null
+
+            },urlRoot: "api/usrlist/getAdmin"
+
+        });
+
+        var UserInfoCollection = Backbone.Collection.extend({
+            idAttribute:"preferredUsername",
+            model: UserInfoModel,
+            url: 'api/userlist/admin'
+        });
+
+        var UserProfileEditView = Backbone.View.extend({
+            tagName: 'span',
+
+            initialize: function(options) {
+                this.options = options;
+                console.log( this.options);
+                console.log( this.model);
+
+                if (!this.template) {
+                    this.template = _.template($('#tmpl-edit-user-profile-element').html());
+                }
+            },
+
+            render: function() {
+
+                $(this.el).html($('#tmpl-edit-user-profile').html());
+
+                var t = this.template;
+
+                _.each(this.model, function(value, key) {
+
+                    this.model.forEach()
+                    if (key && value) {
+
+                        if (typeof (value) === 'object') {
+
+                            var el = this.el;
+                            var k = key;
+
+                            _.each(value, function(value, key) {
+                                $('dl', el).append(t({
+                                    key: key,
+                                    value: value,
+                                    category: k
+                                }));
+                            });
+                        } else if (typeof (value) === 'array') {
+                            // TODO: handle array types
+                        } else {
+                            $('dl', this.el).append( t({
+                                key: key,
+                                value: value
+                            }));
+
+                        }
+                    }
+                }, this);
+
+                $(this.el).append($('#tmpl-edit-user-profile-bottom').html());
+                $(this.el).i18n();
+                return this;
+            },
+            events: {
+                'click .btn-save': 'saveProfile',
+                'click .btn-cancel': 'cancelProfile',
+
+            },
+            saveProfile: function(e) {
+                e.preventDefault();
+                $('.control-group').removeClass('error');
+
+
+                var _self = this;
+                this.model.save({}, {
+                    success: function() {
+                        app.whiteListList.add(_self.model);
+                        app.navigate('admin/editprofile', {
+                            trigger: true
+                        });
+                    },
+                    error: app.errorHandlerView.handleError()
+                });
+            },
+            cancelProfile : function(e){
+
+            },load:function(callback) {
+
+                console.log(" is loadding....");
+                $('#loadingbox').sheet('show');
+                $('#loading').html('<span class="label" id="loading-userInfo">' + $.t('userlist.user_info_test') );
+
+                $.when(this.model.fetchIfNeeded({
+                    success: function(e) {
+                        $('#loading-userlist').addClass('label-success');
+                    },
+                    error: app.errorHandlerView.handleError()
+                }), this.options.userList.fetchIfNeeded({
+                    success: function(e) {
+                        $('#loading-user').addClass('label-success');
+                    },
+                    error: app.errorHandlerView.handleError()
+                })).done(function() {
+                    $('#loadingbox').sheet('hide');
+                    callback();
+                });
+            }
+
+        });
+
+
+
+        var UserListView = Backbone.View.extend({
+
+            tagName: 'span',
+            stats:{},
+
+            initialize: function(options) {
+                this.options = options;
+                this.pagedModel = this.model;
+
+                console.log( "init " + this.options);
+                console.log( "init " + this.pagedModel);
+            },
+
+            load: function (callback){
+
+
+                console.log( "load " + this.model);
+                console.log( "load " + this.options);
+
+
+                /*		if( this.options.userList.isFetched ){
+                            callback();
+                            return;
+                        }*/
+                /*if( this.model.isFetched && this.options.userList.isFetched ){
+                    callback();
+                    return;
+                }*/
+
+                $('#loadingbox').sheet('show');
+                $('#loading').html('<span class="label" id="loading-userlist">' + $.t('userlist.userlist') );
+
+                $.when(this.model.fetchIfNeeded({
+                    success: function(e) {
+                        $('#loading-userlist').addClass('label-success');
+                    },
+                    error: app.errorHandlerView.handleError()
+                }), this.options.userList.fetchIfNeeded({
+                    success: function(e) {
+                        $('#loading-user').addClass('label-success');
+                    },
+                    error: app.errorHandlerView.handleError()
+                })).done(function() {
+                    $('#loadingbox').sheet('hide');
+                    callback();
+                });
+            },
+
+            events:{
+                "click .refresh-table": "refreshTable"
+            },
+            render: function(eventName) {
+                console.log(this.eventName );
+
+                console.log(this.model.toJSON());
+
+                this.$el.html(this.template(this.model.toJSON()));
+
+                var _self = this;
+
+                _.each(this.model.models, function(userList) {
+
+                    var view = new UserView({
+                        model: userList
+                    });
+
+                    view.parentView = _self;
+                    $("#tmpl-userlist-table", _self.el).append(view.render().el);
+                }, this);
+
+
+                $(this.el).i18n();
+                return this;
+            },
+            refreshTable: function(e){
+                e.preventDefault();
+                var _self = this;
+
+            }
+        });
+
+
+        var UserView = Backbone.View.extend({
+
+            tagName: 'tr',
+            initialize: function(options) {
+                this.options = options;
+
+                if( !this.template){
+                    this.template = _.template($('#tmpl-userlist').html());
+                }
+
+                this.model.bind('change', this.render, this);
+            },
+
+            render: function(eventName) {
+                var json ={
+                    userList: this.model.toJSON()
+                };
+
+                this.$el.html(this.template(json));
+
+
+                $(this.el).i18n();
+                return this;
+            },
+            events: {
+                'click .btn-edit': 'editUser',
+                'click .btn-delete': 'deleteUser'
+            },
+            editUser: function(e) {
+                e.preventDefault();
+                app.navigate('admin/userlist/' + this.model.get('id'), {
+                    trigger: true
+                });
+            },
+            deleteUser: function(e) {
+                e.preventDefault();
+
+                if (confirm($.t('userlist.confirm'))) {
+                    var _self = this;
+
+                    this.model.destroy({
+                        dataType: false,
+                        processData: false,
+                        success: function() {
+                            _self.$el.fadeTo("fast", 0.00, function() { // fade
+                                $(this).slideUp("fast", function() { // slide up
+                                    $(this).remove(); // then remove from the DOM
+                                    // check the placeholder in case it's empty now
+                                    _self.parentView.togglePlaceholder();
+                                });
+                            });
+                        },
+                        error: app.errorHandlerView.handleError()
+                    });
+
+                    _self.parentView.delegateEvents();
+                }
+
+                return false;
+            },
+
+            close: function() {
+                $(this.el).unbind();
+                $(this.el).empty();
+            }
+        });
+
+
+
+        ui.routes.push({
+            path: "admin/userlist",
+            name: "userList",
+            callback: function() {
+
+                if (!isAdmin()) {
+                    this.root();
+                    return;
+                }
+
+                this.updateSidebar('admin/userlist');
+
+                this.breadCrumbView.collection.reset();
+                this.breadCrumbView.collection.add([{
+                    text: $.t('admin.home'),
+                    href: ""
+                }, {
+                    text: $.t('userlist.manage'),
+                    href: "manage/#admin/userlist"
+                }]);
+
+                var _self = this;
+                console.log ( "_self" + _self);
+
+                var view = new UserListView({
+                    model: this.UserListCollection
+                });
+
+                view.load(function() {
+                    $('#content').html(view.render().el);
+                    view.delegateEvents();
+                    setPageTitle($.t('userlist.manage'));
+                });
+
+            }
+        });
+
+        ui.routes.push({
+            path: "admin/userlist/admin",
+            name: "admin",
+            callback: function() {
+
+                if (!isAdmin()) {
+                    this.root();
+                    return;
+                }
+
+
+
+                this.updateSidebar('admin/userlist');
+
+                this.breadCrumbView.collection.reset();
+                this.breadCrumbView.collection.add([{
+                    text: $.t('admin.home'),
+                    href: ""
+                }, {
+                    text: $.t('userlist.manage'),
+                    href: "manage/#admin/userlist"
+                }]);
+
+                var _self = this;
+                console.log ( "_self" + _self);
+
+
+                var adminInfo = new UserProfileEditView();
+
+                var view = new UserInfoView({
+                    model: adminInfo
+                });
+
+                view.load(function() {
+                    $('#content').html(view.render().el);
+                    view.delegateEvents();
+                    setPageTitle($.t('userlist.manage'));
+                });
+
+            }
+        });
+
+        ui.templates.push('resources/template/users.html');
+
+        ui.init.push(function(app) {
+
+            app.userList = new UserListCollection();
+            app.userInfo = new UserInfoCollection();
+
+        });
+
+
+    </script>
+</body>
+</html>

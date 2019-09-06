@@ -1,0 +1,29 @@
+
+{
+  "userInfo":
+    {
+      "id": 1,
+      "sub": "90342.ASDFJWFA",
+      "preferredUsername": "admin",
+      "name": "Demo Admin",
+      "givenName": null,
+      "familyName": null,
+      "middleName": null,
+      "nickname": null,
+      "profile": null,
+      "picture": null,
+      "website": null,
+      "email": "admin@example.com",
+      "emailVerified": true,
+      "gender": null,
+      "zoneinfo": null,
+      "locale": null,
+      "phoneNumber": null,
+      "phoneNumberVerified": null,
+      "address": null,
+      "updatedTime": null,
+      "birthdate": null
+    }
+
+
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="theme-description">
+    <meta name="author" content="ryoryeong">
+    <title>SimpleBackBoneJS</title>
+
+</head>
+<body>
+
+<!-- ========= -->
+<!-- Your HTML -->
+<!-- ========= -->
+<div id = "container">Loading...</div>
+<!-- ========= -->
+<!-- Libraries -->
+<!-- ========= -->
+<script src = "https://code.jquery.com/jquery-2.1.3.min.js"
+        type = "text/javascript"></script>
+
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"
+        type = "text/javascript"></script>
+
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"
+        type = "text/javascript"></script>
+
+
+<!-- =============== -->
+<!-- Javascript code -->
+<!-- =============== -->
+
+<script type = "text/javascript">
+
+
+    //url
+    // https://localhost:63342/ScriptMemo/lib/BackBoneJS/SimpleBackBone.html?_ijt=pn17qdtmsgk4sqio4qo3luvbfv
+    // https://localhost:63342/ScriptMemo/lib/data/testUser.json
+
+    var userModel = Backbone.Model.extend({
+
+        idAttribute: "id",
+        defaults:{
+            userInfo: [],
+            users: []
+        },
+        initialize: function() {
+        },
+
+        urlRoot: "api/userlist"
+
+    });
+
+    var UserListCollection = Backbone.Collection.extend({
+        initialize: function() {
+            // this.fetch();
+        },
+
+        /*getByUserName: function(userName) {
+            var users = this.where({
+                userName: userName
+            });
+            if (users.length == 1) {
+                return users[0];
+            } else {
+                return null;
+            }
+        },*/
+
+        model: userModel,
+        url: "ScriptMemo/lib/data/testUser.json"
+
+    });
+
+
+    var UserListView = Backbone.View.extend({
+
+        tagName: 'span',
+        stats:{},
+
+        initialize: function(options) {
+            this.options = options;
+            this.pagedModel = this.model;
+        },
+
+        render: function(eventName) {
+            console.log(this.model.toJSON());
+            this.$el.html(this.template(this.model.toJSON()));
+
+            var _self = this;
+
+            _.each(this.model.models, function(userList) {
+
+                var view = new UserView({
+                    model: userList
+                });
+
+                view.parentView = _self;
+                $("#tmpl-userlist-table", _self.el).append(view.render().el);
+            }, this);
+
+
+            $(this.el).i18n();
+            return this;
+        }
+    });
+
+
+    var UserView = Backbone.View.extend({
+
+        initialize: function(options) {
+            this.options = options;
+
+            if( !this.template){
+                this.template = _.template($('#'))
+            }
+        },
+
+    })
+
+
+
+</script>
+</body>
+</html>
