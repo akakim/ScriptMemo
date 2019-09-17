@@ -1,6 +1,5 @@
-
 {
-  "userInfo":
+  "userInfo": [
     {
       "id": 1,
       "sub": "90342.ASDFJWFA",
@@ -23,7 +22,75 @@
       "address": null,
       "updatedTime": null,
       "birthdate": null
+    },
+    {
+      "id": 2,
+      "sub": "01921.FLANRJQW",
+      "preferredUsername": "user",
+      "name": "Demo User",
+      "givenName": null,
+      "familyName": null,
+      "middleName": null,
+      "nickname": null,
+      "profile": null,
+      "picture": null,
+      "website": null,
+      "email": "user@example.com",
+      "emailVerified": true,
+      "gender": null,
+      "zoneinfo": null,
+      "locale": null,
+      "phoneNumber": null,
+      "phoneNumberVerified": null,
+      "address": null,
+      "updatedTime": null,
+      "birthdate": null
+    },
+    {
+      "id": 3,
+      "sub": "02222.FLANRJQW",
+      "preferredUsername": "sso",
+      "name": "Demo SSO",
+      "givenName": null,
+      "familyName": null,
+      "middleName": null,
+      "nickname": null,
+      "profile": null,
+      "picture": null,
+      "website": null,
+      "email": "sso@dreamsecurity.com",
+      "emailVerified": true,
+      "gender": null,
+      "zoneinfo": null,
+      "locale": null,
+      "phoneNumber": null,
+      "phoneNumberVerified": null,
+      "address": null,
+      "updatedTime": null,
+      "birthdate": null
+    },
+    {
+      "id": 4,
+      "sub": "04412.SDSSADKW",
+      "preferredUsername": "tester",
+      "name": "Tester",
+      "givenName": null,
+      "familyName": null,
+      "middleName": null,
+      "nickname": null,
+      "profile": null,
+      "picture": null,
+      "website": null,
+      "email": "test@dreamsecurity.com",
+      "emailVerified": true,
+      "gender": null,
+      "zoneinfo": null,
+      "locale": null,
+      "phoneNumber": null,
+      "phoneNumberVerified": null,
+      "address": null,
+      "updatedTime": null,
+      "birthdate": null
     }
-
-
+  ]
 }

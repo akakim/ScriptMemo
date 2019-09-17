@@ -14,14 +14,14 @@
     <style>
         #movieInfo {background-color:yellow}
 
-
-
-
-
+        #helloWorld{ margin-top:  200px }
     </style>
 </head>
 <body>
 <div id="movieInfo"></div>
+
+<div id="helloWorld"></div>
+
 <script type="text/template" id="MovieViewTemplate">
     <h3><%= title %></h3>
     <p>
@@ -30,7 +30,30 @@
     </p>
 </script>
 
+
+<script type="text/template" id="HelloWorldTemplate">
+
+    <h3>Hello <%= who%> </h3>
+
+
+</script>
 <script>
+    var AppView = Backbone.View.extend({
+       $el:$('#helloWorld') ,
+        // template which has the placeholder 'who' to be substitute later
+        // 고정된 템플릿임 'who는 나중에 작성된다.
+        template:_.template($("#HelloWorldTemplate").html()),
+        initialize:function(){
+           this.render();
+        },
+        render: function(){
+           this.$el.html(this.template({who:"world"}));
+        }
+
+    });
+
+    var appView = new AppView();
+
     var MovieModel = Backbone.Model.extend({
         defaults: {
             title: "",
