@@ -1,0 +1,168 @@
+{
+  "detail": [
+    {
+      "password": "144dc5ebc3d28ac78f771776907fc53d678cd60ceaf38f9bf215db8c98aceeb96b86962231f5519b",
+      "username": "admin",
+      "authorities": [
+        {
+          "role": "ROLE_ADMIN"
+        },
+        {
+          "role": "ROLE_DEV"
+        },
+        {
+          "role": "ROLE_USER"
+        }
+      ],
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "enabled": true
+    },
+    {
+      "password": "858a2692f3a43c14077fadf0c80237b136c4c9a7461b38ddfd25ac10f6107edd348166237421d288",
+      "username": "sso",
+      "authorities": [
+        {
+          "role": "ROLE_DEV"
+        },
+        {
+          "role": "ROLE_USER"
+        }
+      ],
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "enabled": true
+    },
+    {
+      "password": "342069a89933940ce03e921d871f274bad09f03c2614b0634ee74ab0965b8fc53129408987f6448c",
+      "username": "tester",
+      "authorities": [
+        {
+          "role": "ROLE_ADMIN"
+        },
+        {
+          "role": "ROLE_USER"
+        }
+      ],
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "enabled": true
+    },
+    {
+      "password": "277af0ac589152347bb23eb10ba0fc777b7a508eb5194d78f5b1ab3accee70067a828ab3fcc059ab",
+      "username": "yoon",
+      "authorities": [
+        {
+          "role": "ROLE_ADMIN"
+        },
+        {
+          "role": "ROLE_DEV"
+        },
+        {
+          "role": "ROLE_USER"
+        }
+      ],
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "enabled": true
+    }
+  ],
+  "info": [
+    {
+      "id": 1,
+      "sub": "",
+      "preferredUsername": "admin",
+      "name": "Demo Admin",
+      "givenName": null,
+      "familyName": null,
+      "middleName": null,
+      "nickname": null,
+      "profile": null,
+      "picture": null,
+      "website": null,
+      "email": "admin@example.com",
+      "emailVerified": false,
+      "gender": null,
+      "zoneinfo": null,
+      "locale": null,
+      "phoneNumber": null,
+      "phoneNumberVerified": null,
+      "address": null,
+      "updatedTime": null,
+      "birthdate": null
+    },
+    {
+      "id": 3,
+      "sub": "02222.FLANRJQW",
+      "preferredUsername": "sso",
+      "name": "Demo SSO",
+      "givenName": null,
+      "familyName": null,
+      "middleName": null,
+      "nickname": null,
+      "profile": null,
+      "picture": null,
+      "website": null,
+      "email": "sso@dreamsecurity.com",
+      "emailVerified": true,
+      "gender": null,
+      "zoneinfo": null,
+      "locale": null,
+      "phoneNumber": null,
+      "phoneNumberVerified": null,
+      "address": null,
+      "updatedTime": null,
+      "birthdate": null
+    },
+    {
+      "id": 4,
+      "sub": "04412.SDSSADKW",
+      "preferredUsername": "tester",
+      "name": "Tester",
+      "givenName": null,
+      "familyName": null,
+      "middleName": null,
+      "nickname": null,
+      "profile": null,
+      "picture": null,
+      "website": null,
+      "email": "test@dreamsecurity.com",
+      "emailVerified": true,
+      "gender": null,
+      "zoneinfo": null,
+      "locale": null,
+      "phoneNumber": null,
+      "phoneNumberVerified": null,
+      "address": null,
+      "updatedTime": null,
+      "birthdate": null
+    },
+    {
+      "id": 25,
+      "sub": "",
+      "preferredUsername": "yoon",
+      "name": "sihun",
+      "givenName": null,
+      "familyName": null,
+      "middleName": null,
+      "nickname": null,
+      "profile": null,
+      "picture": null,
+      "website": null,
+      "email": "test@example.com",
+      "emailVerified": null,
+      "gender": null,
+      "zoneinfo": null,
+      "locale": null,
+      "phoneNumber": "010-4444-4545",
+      "phoneNumberVerified": null,
+      "address": null,
+      "updatedTime": null,
+      "birthdate": null
+    }
+  ]
+}

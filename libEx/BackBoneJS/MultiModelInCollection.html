@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="theme-description">
+    <meta name="author" content="ryoryeong">
+    <title>MultiModelInCollection</title>
+
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js"
+            type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"
+            type="text/javascript"></script>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+
+    // 상속으로 해결한다. ? refer : https://stackoverflow.com/questions/14263765/backbone-collection-with-multiple-models
+
+    var DataModel = Backbone.Model.extend({
+        // Whatever you want in here
+        urlRoot:'ScriptMemo/libEx/resource/data/allUsersTest.json'
+    });
+
+    var DetailModel = DataModel.extend({
+        idAttribute,'username',
+        type: 'detail',
+        urlRoot:'ScriptMemo/libEx/resource/data/allUsersTest.json'
+    });
+
+    var InfoModel = DataModel.extend({
+        idAttribute,'id',
+        type:'Info',
+        urlRoot:'ScriptMemo/libEx/resource/data/allUsersTest.json'
+    });
+
+
+    var InfoCoolection = Backbone.Collection.extend({
+        model: DetailModel,
+        url: 'ScriptMemo/libEx/resource/data/allUsersTest.json'
+    });
+
+
+
+    var DataCollection = Backbone.Collection.extend({
+        model: DataModel,
+        url: 'ScriptMemo/libEx/resource/data/allUsersTest.json',
+        initialize: function() {
+            //this.fetch();
+            console.log("UserListCollection is init ");
+        },
+        model:function(attrs,options){
+            switch(attrs.type){
+                case "info":
+                    return new InfoModel(attrs,options);
+                case "detail":
+                    return new DetailModel(attrs,options);
+            }
+        }
+    });
+
+
+    var ss = new DataCollection([{
+
+            "detail": [
+                {
+                    "password": "144dc5ebc3d28ac78f771776907fc53d678cd60ceaf38f9bf215db8c98aceeb96b86962231f5519b",
+                    "username": "admin",
+                    "authorities": [
+                        {
+                            "role": "ROLE_ADMIN"
+                        },
+                        {
+                            "role": "ROLE_DEV"
+                        },
+                        {
+                            "role": "ROLE_USER"
+                        }
+                    ],
+                    "accountNonExpired": true,
+                    "accountNonLocked": true,
+                    "credentialsNonExpired": true,
+                    "enabled": true
+                },
+                {
+                    "password": "858a2692f3a43c14077fadf0c80237b136c4c9a7461b38ddfd25ac10f6107edd348166237421d288",
+                    "username": "sso",
+                    "authorities": [
+                        {
+                            "role": "ROLE_DEV"
+                        },
+                        {
+                            "role": "ROLE_USER"
+                        }
+                    ],
+                    "accountNonExpired": true,
+                    "accountNonLocked": true,
+                    "credentialsNonExpired": true,
+                    "enabled": true
+                },
+                {
+                    "password": "342069a89933940ce03e921d871f274bad09f03c2614b0634ee74ab0965b8fc53129408987f6448c",
+                    "username": "tester",
+                    "authorities": [
+                        {
+                            "role": "ROLE_ADMIN"
+                        },
+                        {
+                            "role": "ROLE_USER"
+                        }
+                    ],
+                    "accountNonExpired": true,
+                    "accountNonLocked": true,
+                    "credentialsNonExpired": true,
+                    "enabled": true
+                },
+                {
+                    "password": "277af0ac589152347bb23eb10ba0fc777b7a508eb5194d78f5b1ab3accee70067a828ab3fcc059ab",
+                    "username": "yoon",
+                    "authorities": [
+                        {
+                            "role": "ROLE_ADMIN"
+                        },
+                        {
+                            "role": "ROLE_DEV"
+                        },
+                        {
+                            "role": "ROLE_USER"
+                        }
+                    ],
+                    "accountNonExpired": true,
+                    "accountNonLocked": true,
+                    "credentialsNonExpired": true,
+                    "enabled": true
+                }
+            ],
+            "info": [
+                {
+                    "id": 1,
+                    "sub": "",
+                    "preferredUsername": "admin",
+                    "name": "Demo Admin",
+                    "givenName": null,
+                    "familyName": null,
+                    "middleName": null,
+                    "nickname": null,
+                    "profile": null,
+                    "picture": null,
+                    "website": null,
+                    "email": "admin@example.com",
+                    "emailVerified": false,
+                    "gender": null,
+                    "zoneinfo": null,
+                    "locale": null,
+                    "phoneNumber": null,
+                    "phoneNumberVerified": null,
+                    "address": null,
+                    "updatedTime": null,
+                    "birthdate": null
+                },
+                {
+                    "id": 3,
+                    "sub": "02222.FLANRJQW",
+                    "preferredUsername": "sso",
+                    "name": "Demo SSO",
+                    "givenName": null,
+                    "familyName": null,
+                    "middleName": null,
+                    "nickname": null,
+                    "profile": null,
+                    "picture": null,
+                    "website": null,
+                    "email": "sso@dreamsecurity.com",
+                    "emailVerified": true,
+                    "gender": null,
+                    "zoneinfo": null,
+                    "locale": null,
+                    "phoneNumber": null,
+                    "phoneNumberVerified": null,
+                    "address": null,
+                    "updatedTime": null,
+                    "birthdate": null
+                },
+                {
+                    "id": 4,
+                    "sub": "04412.SDSSADKW",
+                    "preferredUsername": "tester",
+                    "name": "Tester",
+                    "givenName": null,
+                    "familyName": null,
+                    "middleName": null,
+                    "nickname": null,
+                    "profile": null,
+                    "picture": null,
+                    "website": null,
+                    "email": "test@dreamsecurity.com",
+                    "emailVerified": true,
+                    "gender": null,
+                    "zoneinfo": null,
+                    "locale": null,
+                    "phoneNumber": null,
+                    "phoneNumberVerified": null,
+                    "address": null,
+                    "updatedTime": null,
+                    "birthdate": null
+                },
+                {
+                    "id": 25,
+                    "sub": "",
+                    "preferredUsername": "yoon",
+                    "name": "sihun",
+                    "givenName": null,
+                    "familyName": null,
+                    "middleName": null,
+                    "nickname": null,
+                    "profile": null,
+                    "picture": null,
+                    "website": null,
+                    "email": "test@example.com",
+                    "emailVerified": null,
+                    "gender": null,
+                    "zoneinfo": null,
+                    "locale": null,
+                    "phoneNumber": "010-4444-4545",
+                    "phoneNumberVerified": null,
+                    "address": null,
+                    "updatedTime": null,
+                    "birthdate": null
+                }
+            ]
+
+    }]);
+
+
+
+    var UserListView = Backbone.View.extend({
+
+        tagName: 'span',
+
+        initialize: function(options) {
+            this.options = options;
+
+        },
+        events:{
+            "click .refresh-table": "refreshTable",
+            "click .new-user" : "newUser"
+        },
+        render: function(eventName) {
+
+
+            console.log("redering model..... " + this.model);
+
+            console.log("JSON ..... " + this.model.toJSON());
+
+
+            $(this.el).html($('#tmpl-userlist-table').html());
+
+            var _self = this;
+
+            console.log( "a models " + this.model.models);
+            console.log( "this " + this.models);
+
+            _.each(this.model.models, function(userList) {
+
+                console.log("a user " + userList);
+                var view = new UserView({
+                    model: userList
+                });
+
+                view.parentView = _self;
+                $("#userlist-table", _self.el).append(view.render().el);
+
+
+                this.addView(userList, view);
+            }, this);
+
+
+            $(this.el).i18n();
+            return this;
+        },renderInner:function(eventName){
+
+        },
+        views: {},
+        addView: function(index, view) {
+            this.views[index] = view;
+        },
+        getView:function(index){
+            return this.views[index];
+        },
+        refreshTable: function(e){
+            e.preventDefault();
+            $('#loadingbox').sheet('show');
+            $('#loading').html('<span class="label" id="loading-clients">' + $.t("common.clients") + '</span> ' + '<span class="label" id="loading-whitelist">' + $.t("whitelist.whitelist") + '</span> ' + '<span class="label" id="loading-scopes">' + $.t("common.scopes") + '</span> ');
+            var _self = this;
+
+            $.when( this.model.fetch({
+                success: function(e) {
+                    $('#loading-user').addClass('label-success');
+                },
+                error: app.errorHandlerView.handleError()
+            })).done(function() {
+                $('#loadingbox').sheet('hide');
+                _self.render();
+            });
+
+        },
+        newUser: function(e){
+            e.preventDefault();
+            this.remove();
+            app.navigate('admin/user/new', {
+                trigger: true
+            });
+
+        }
+    });
+
+
+
+    var view = new UserListView({
+        model: ss
+    });
+    view.render();
+
+    /*var file = Backbone.Model.extend({
+            defaults: {
+                // will need to include a tie breaker attribute in both models
+                type: 'file'
+            }
+        }),
+        folder = Backbone.Model.extend({
+            defaults: {
+                // tie breaker
+                type: 'folder'
+            }
+        });
+
+    var fs = Backbone.Collection.extend({
+        model: function(model, options) {
+            switch(model.type) {
+                case 'file':
+                    return new file(model, options);
+                case 'folder':
+                    return new folder(model, options);
+            }
+        }
+    });*/
+
+    // after that just add models to the collection as always
+   /* new fs([
+        {type: 'file',name: 'file.txt'},
+        {type: 'folder',name: 'Documents'}
+    ]);*/
+
+</script>
+</body>
+</html>

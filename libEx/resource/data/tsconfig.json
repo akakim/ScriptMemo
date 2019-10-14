@@ -1,0 +1,35 @@
+{
+  "info": {
+    "id": 1,
+    "sub": "",
+    "preferredUsername": "testUser",
+    "name": "testUser22",
+    "givenName": null,
+    "familyName": null,
+    "middleName": null,
+    "nickname": null,
+    "profile": null,
+    "picture": null,
+    "website": null,
+    "email": "test@example.com",
+    "emailVerified": false,
+    "gender": null,
+    "zoneinfo": null,
+    "locale": null,
+    "phoneNumber": "010-9866-9293",
+    "phoneNumberVerified": null,
+    "address": null,
+    "updatedTime": null,
+    "birthdate": null
+  },
+    "detail": {
+      "userName": "testUser",
+      "password": "123456",
+      "authorities": [
+        "ROLE_ADMIN",
+        "ROLE_DEV",
+        "ROLE_USER"
+      ]
+  }
+
+}
