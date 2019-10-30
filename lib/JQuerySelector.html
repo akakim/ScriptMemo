@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="theme-description">
+    <meta name="author" content="ryoryeong">
+    <title>Title</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+
+        $(document).ready(function(){
+            // 태그 id가 id_selector인 태그로 감싸져있는 문자열 찾기..
+            let id_selector = $("#id_selector").text();
+
+            // 태그 class가 class_selector인 태그로 감싸져 있는 문자열 찾기
+            let class_selector = $(".class_selector").text();
+            let tag_selector = $("span").text();
+            alert(
+                " 셀렉터 (ID) 값 :" + id_selector + "\n" +
+                "클래스 (class) 값 :" + class_selector + "\n" +
+                "태그(tag) 값 :" + tag_selector + "\n"
+            );
+        });
+
+    </script>
+</head>
+<body>
+
+<!-- Bootstrap core JavaScript
+      ================================================== -->
+<!-- Placed at the end of the document so the pages load faster
+    id, class 태그를 이용한 셀럭터에 대해서 알아봄
+     Jquery 코드는 $(셀렉터) 또는 JQuery(셀렉터) 구조로 시작된다.
+
+     id 셀렉터 : $("#셀렉터") = document.getelementbyid("셀렉터")
+     class 셀렉터 : $(".셀렉터") = document.getelementByClassName("셀렉터")
+     태그 셀렉터 : $("태그명") = document.getelementsbytagname("셀렉터")
+-->
+
+
+    <div id="id_selector"> 아이디 값을 알아보는 샐랙터 </div>
+    <div class="class_selector"> 클래스 값으로 알아보는 샐랙터 </div>
+    <span> 태그로 알아보는 샐랙터 </span>
+
+</body>
+</html>

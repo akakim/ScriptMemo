@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="theme-description">
+    <meta name="author" content="ryoryeong">
+    <title>JQuery 튜토리얼.</title>
+
+    <!-- Bootstrap core JavaScript
+      ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript">
+    alert("HEAD 시점의 alert");
+    window.onload = function(){
+        alert("window.onload Alert 경고창 ");
+    }
+
+    $(document).ready(function(){
+        alert("docuemnt.reaady 경고창 ");
+    })
+
+    </script>
+</head>
+<body>
+<script type="text/javascript">
+    alert("BODY ALERT 경고창");
+</script>
+
+<!--
+// 이렇게 더 간결하게 이용 가능
+
+자바스크립트를 사용하셨던분이시라면 window.onload와 동일한 기능이라고 생각하시면 되겠는대요.
+
+물론 window.onload, $(function(){}) , $(document).ready() 의 onload 스크립트 코드들은 body태그의 모든 태그들이
+
+출력된 다음에 호출이 되는 코드입니다.
+
+onload 라고 해서 모두 같은 1순위인건 아닙니다.
+
+호출순서는
+
+
+
+1. $(document).ready() = $(function(){})
+
+2. window.onload
+둘은 body 태그 내의 모든 코드를 읽은 후 호출되는 onload기능 들이어도 순수 window.onload코드가 가장 나중에 호출이 된다.
+
+-->
+$(function(){
+// code insert
+
+});
+
+<a href="https://hellogk.tistory.com/18">JQuery  연동부터 $(document).ready() 이해하기</a>
+</body>
+</html>
