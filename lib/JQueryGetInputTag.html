@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="theme-description">
     <meta name="author" content="ryoryeong">
-    <title>Title</title>
+    <title>JQueryInputTag</title>
 
     <!-- Bootstrap core JavaScript
       ================================================== -->
@@ -16,7 +16,37 @@
 <body>
 
 
-    JQuery
+    JQuery 에서 지원되는 함수만으로 간단하게 태그 값을 확인가능하다.
+    그리고 반대로 원하는 값을 태그값에 적용 또한 가능하다.
+
+    html() 함수와 text() 함수 val 함수에 대해서 ....
+
+    $("selector").html ()
+
+
+    <div id="getTag">
+        <h3>111111<br/><span>22222222</span> 3333333 </h3>
+    </div>
+
+    <div id="getRedTag" style="border-width: 1px;border-style: solid;border-color: red;"></div>
+    <br/>
+    <div id="getBlueText" style="border-width: 1px;border-style: solid;border-color: blue;"></div>
+
+    <script>
+        $(function(){
+            let getTag =  $("#getTag").html();
+            let getText = $("#getTag").text();
+            alert(getTag);
+            alert(getText);
+
+
+            var setTag = "<input type='text'><br/>dynamic text</input>";
+            $("#getRedTag").html(setTag);
+            $("#getBlueText").text(setTag);
+
+        });
+
+    </script>
 
 </body>
 </html>

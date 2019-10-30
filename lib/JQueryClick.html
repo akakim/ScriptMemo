@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="theme-description">
+    <meta name="author" content="ryoryeong">
+    <title>JQueryClick</title>
+    <!-- Bootstrap core JavaScript
+          ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <style>
+        .hover_class{
+            background-color: blue;
+            color: white;
+
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <h1> 한번 클릭 </h1>
+    <input type="button" id="btn" value="한번 클릭"/>
+
+    <br/>
+
+    <h1> 두번 클릭 </h1>
+    <input type="button" id="dblbtn" value="더블 클릭"/>
+
+
+
+    <br/>
+
+    <select id="slt">
+        <option value = "first"> first</option>
+        <option value = "second"> second </option>
+    </select>
+
+
+    <input type="text" id="keyDown"/>
+
+
+    <div id="mouseHover">
+        마우스를 올리면 영역의 색이 변합니다.
+    </div>
+
+
+
+    <script type="text/javascript">
+        $( function(){
+          $("#btn").click(function(){
+              // 클릭 이벤트 발생시 진행할 스크립트 작성
+              alert("클릭합니다.");
+            })
+        });
+
+
+       /* $("#dblbtn").click(function () {
+            alert("원 클릭합니다.");
+        });*/
+
+        $("#dblbtn").dblclick(function () {
+            alert("더블 클릭합니다.");
+        });
+
+        $("#slt").change(function(){
+            let value = $("#slt").val();
+
+            alert("변경되었습니다. 선택된 값은 " + value + " 입니다.");
+        });
+
+        $("#keyDown").keypress(function(){
+            console.log("key is input..... ");
+        });
+
+        $("#mouseHover").hover(
+
+            // 타겟에 마우스 포커스가 잡현을 경우
+            function(){
+                // div class 속성에 hover_class라는 클래스 추가.
+                $("#mouseHover").attr("class","hover_class");
+            },
+            // 마우스 포커스가 벗어났을경우 hover_class 제거
+            function(){
+                // div class 속성에 hover_class
+                $('#mouseHover').attr("class","");
+            }
+        )
+    </script>
+
+
+</body>
+</html>
