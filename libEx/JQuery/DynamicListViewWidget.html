@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" charset="utf-8">
+<head>
+    <meta charset="UTF-8">
+    <title> DynamicListWidgetView</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+</head>
+<body>
+    <input type="button" id="makebtn" value="버튼생성"/>
+
+    <input type="button" id="makeDiv" value="한줄 생성 "/>
+
+
+    <input type="button" id="makeChk" value="체크박스 생성  "/>
+    <div>
+
+        <input type="text" id="default" />
+        <div id="inputArea"></div>
+
+
+    </div>
+    <script>
+        $(function (){
+
+
+           /* $("#makebtn").click(
+                function(){
+                    var dynamicTag = '<input type="button" id="btn" value="경고"/>';
+                    $("body").html(dynamicTag); })
+            $(document).on("click","#btn",function(){
+                alert("!");
+            })*/
+
+
+
+            $(document).on("click","#makeDiv",function(){
+                var $div = $('<div>Hello</div>');
+                $('#inputArea').append($div);
+                $div.appendTo($('#zero'));
+                document.getElementById('inputArea').appendChild(div);
+            })
+
+/*            $("#makeDiv").click(
+                function(){
+                    var dynamicInput =  $("<input>");
+                    dynamicInput.attr('id','helloID');
+                    $("inputArea").appendChild(dynamicInput);
+                })*/
+
+
+        })
+
+
+    </script>
+</body>
+</html>
