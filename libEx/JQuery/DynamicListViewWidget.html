@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="ko" charset="utf-8">
 <head>
+
     <meta charset="UTF-8">
     <title> DynamicListWidgetView</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-
 </head>
 <body>
     <input type="button" id="makebtn" value="버튼생성"/>
-
     <input type="button" id="makeDiv" value="한줄 생성 "/>
+    <input type="button" id="makeChk" value="체크박스 생성 "/>
 
-
-    <input type="button" id="makeChk" value="체크박스 생성  "/>
     <div>
 
         <input type="text" id="default" />
-        <div id="inputArea"></div>
+        <div id="inputArea"/>
+
+        <div class="control-group">
+            <table class="table table-condensed"/>
+        </div>
 
 
     </div>
     <script>
         $(function (){
 
-
+            let count = 0;
            /* $("#makebtn").click(
                 function(){
                     var dynamicTag = '<input type="button" id="btn" value="경고"/>';
@@ -33,13 +35,16 @@
                 alert("!");
             })*/
 
-
-
             $(document).on("click","#makeDiv",function(){
-                var $div = $('<div>Hello</div>');
+                let $div = $('<div>Hello</div>');
+                $div.attr('id','HelloID'+count++);
+
+                $div.on("click",function(){
+                    alert( $div.getAttribute('id'));
+                })
+
                 $('#inputArea').append($div);
-                $div.appendTo($('#zero'));
-                document.getElementById('inputArea').appendChild(div);
+
             })
 
 /*            $("#makeDiv").click(
