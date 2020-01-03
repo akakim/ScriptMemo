@@ -52,13 +52,13 @@
 
 
     <script>
-        $(function (){
+        $.ready(function (){
 
             let count = 0;
+            let c = 0;
 
-
+            <!-- TODO:유효성 채크 와 기존 데이터의 중복 체크 -->
             $(document).on("click","#btnAdd",function(){
-
 
                 let $div = $('<li class="list-group-item">' + $("input[id=inputURL]").val()+ '</li>');
                 let btn = $('<button class="btn btn-secondary" type="button"> - </button> ');
@@ -77,6 +77,9 @@
 
                 count++;
             });
+
+
+            // validation
 
         })
 

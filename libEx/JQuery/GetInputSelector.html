@@ -19,5 +19,22 @@
 </head>
 <body>
 
+    <input type="checkbox" value="1"        /> <br />
+    <input type="text" id="txt" value="4"   /> <br />
+    <input type="text" data="txt2" value="3"/> <br />
+    <input type="password" class="pwd" value="5"/> <br />
+
+
+    <script>
+        $(function(){
+            let chkbox_val      = $("input[type=checkbox]").val();
+            let text_val        = $("input[id=txt]").val();
+            let text_val2       = $("input[data=txt2]").val();
+            let password_val    = $("input[class=pwd]").val();
+
+            alert ( chkbox_val + text_val + text_val2 + password_val );
+        })
+    </script>
+
 </body>
 </html>
