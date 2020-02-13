@@ -24,13 +24,27 @@
 
 
 <script>
-    var app = new Vue({
+    let app = new Vue({
         el : '#app',
         data:{
             message: 'Hello Vue I m start new JS '
         }
     })
 
+    let initLife = new Vuew({
+        data:{
+            a : 1
+        },
+        created: function(){
+            console.log("when created View, a is: " + this.a );
+        },
+        updated:function(){
+            a = 3;
+            console.log("shen updated View, a is " + a );
+        }
+
+        destroyed:
+    })
 </script>
 </body>
 </html>
