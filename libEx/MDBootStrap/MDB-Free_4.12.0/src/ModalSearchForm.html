@@ -48,13 +48,18 @@
 
         // Modal로 가는 추가버튼
         $('[name="btnUserInfo"]').click(function(){
-            console.log("check : " + check );
+            //console.log("check : " + check );
             if( check === ''){
                 alert('버튼을 클릭해주세요 ')
                 return ;
             }
 
+            $('#submitModal').ajaxSend(
+
+
+            );
             $('#submitModal').modal();
+
         });
 
         // Modal로 가는 추가버튼
@@ -118,19 +123,19 @@
 
         $('#tblAPI tbody').on('click','tr',function(){
 
+
            let tbody = $(this);
 
             tbody.toggleClass('.ab');
-//            tbody.prop('class','.ab');
 
-//           tbody.toggleClass('.ab');
 
            let td = tbody.find('td');
             check = td.html();
         }).change(function() {
 
 
-
+        var lst = new Array[];
+        lst.sort
 
         });
 
@@ -149,12 +154,17 @@
             // 모든 체크박스에 change 이벤트 발생시키기
             $(":checkbox", tbl).trigger("change");
 
+
+
         });
 
         $('#save').click(function (args) {
+            let modalChkBox = $(":checkbox", tbl);
+            //console.log( $(":checkbox", tbl).get().value );
+            modalChkBox.prop('checked',false);
 
-            $(":checkbox", tbl).prop('checked',false);
-//            alert('sss');
+            $("#userListForm").submit();
+
             $('#submitModal').modal("hide");
         });
     });
@@ -189,120 +199,122 @@
                     </label>
                 </div>
 
-                    <table id="dtBasicExample" class="table table-striped table-bordered table-sm"  >
-                    <thead>
-                        <tr>
-                            <th class="th-sm">이름</th>
-                            <th class="th-sm"><label><input type="checkbox" id="chkAll"/></label> </th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Ashton Cox</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Colleen Hurst</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Sonya Frost</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Jena Gaines</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Quinn Flynn</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Charde Marshall</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Haley Kennedy</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Tatyana Fitzpatrick</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Michael Silva</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Paul Byrd</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Gloria Little</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Bradley Greer</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Dai Rios</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Jenette Caldwell</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Yuri Berry</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Caesar Vance</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td>Doris Wilder</td>
-                            <td> <label><input type="checkbox" /></label> </td>
-                        </tr>
-
-                        </tbody>
-                        <tfoot>
+                    <form id="userListForm" action="" method="post">
+                        <table id="dtBasicExample" class="table table-striped table-bordered table-sm"  >
+                        <thead>
                             <tr>
-                                <th>이름</th>
-
+                                <th class="th-sm">이름</th>
+                                <th class="th-sm"><label><input type="checkbox" id="chkAll"/></label> </th>
                             </tr>
-                        </tfoot>
-                </table>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Tiger Nixon</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Garrett Winters</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Ashton Cox</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Cedric Kelly</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Airi Satou</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Brielle Williamson</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Herrod Chandler</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Rhona Davidson</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Colleen Hurst</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Sonya Frost</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Jena Gaines</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Quinn Flynn</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Charde Marshall</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Haley Kennedy</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Tatyana Fitzpatrick</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Michael Silva</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Paul Byrd</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Gloria Little</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Bradley Greer</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Dai Rios</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Jenette Caldwell</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Yuri Berry</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Caesar Vance</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+                            <tr>
+                                <td>Doris Wilder</td>
+                                <td> <label><input type="checkbox" /></label> </td>
+                            </tr>
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>이름</th>
+
+                                </tr>
+                            </tfoot>
+                    </table>
+                    </form>
             </div>
             </div>
             <div class="modal-footer">
